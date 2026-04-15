@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT Rancang Asa Indonesia – Software, Sistem Digital & Solusi AI</title>
+<meta name="description" content="PT Rancang Asa Indonesia menyediakan layanan software development, IT solutions, dan solusi AI untuk perusahaan dan institusi di Indonesia.">
+<meta name="keywords" content="software development indonesia, jasa pembuatan aplikasi, AI solutions indonesia, automation system indonesia, IT consulting indonesia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #112240;
+    --blue: #0F6FFF;
+    --blue-light: #3D8EFF;
+    --cyan: #00D4FF;
+    --accent: #00FFB2;
+    --gray-100: #F5F7FA;
+    --gray-200: #E8ECF0;
+    --gray-400: #94A3B8;
+    --gray-600: #64748B;
+    --gray-800: #1E293B;
+    --white: #FFFFFF;
+    --font-display: 'Sora', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --radius: 16px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(15,111,255,0.10);
+    --shadow-lg: 0 8px 48px rgba(10,22,40,0.18);
+    --transition: 0.35s cubic-bezier(.4,0,.2,1);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--gray-800);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: var(--transition);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 800; color: #fff; font-family: var(--font-display);
+  }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo-main { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: #fff; }
+  .nav-logo-sub { font-size: 0.68rem; color: var(--gray-400); letter-spacing: 0.05em; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--blue), var(--blue-light));
+    color: #fff; border: none; padding: 10px 24px; border-radius: 8px;
+    font-size: 0.875rem; font-weight: 600; cursor: pointer; font-family: var(--font-body);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .nav-burger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: var(--transition); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 72px 5vw 0;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(15,111,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,111,255,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+  }
+  .hero-glow-1 { background: rgba(15,111,255,0.22); top: -100px; right: -100px; }
+  .hero-glow-2 { background: rgba(0,212,255,0.12); bottom: -100px; left: 10%; }
+
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    padding: 80px 0;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(15,111,255,0.15);
+    border: 1px solid rgba(15,111,255,0.3);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 0.78rem; font-weight: 600; color: var(--cyan);
+    letter-spacing: 0.06em; margin-bottom: 28px;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+  .hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 800; color: #fff; line-height: 1.15;
+    margin-bottom: 24px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero-h1 .highlight {
+    background: linear-gradient(90deg, var(--blue-light), var(--cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    color: var(--gray-400); font-size: 1.05rem; line-height: 1.75;
+    margin-bottom: 40px; max-width: 520px;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blue), var(--blue-light));
+    color: #fff; border: none; padding: 14px 32px; border-radius: 10px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: var(--font-body);
+    box-shadow: 0 4px 20px rgba(15,111,255,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(15,111,255,0.5); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.06); color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 14px 32px; border-radius: 10px;
+    font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: var(--font-body);
+    transition: background 0.2s, border-color 0.2s;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .hero-stat-num {
+    font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: #fff;
+  }
+  .hero-stat-num span { color: var(--cyan); }
+  .hero-stat-label { font-size: 0.8rem; color: var(--gray-400); margin-top: 2px; }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative; animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-dashboard {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 24px;
+    box-shadow: var(--shadow-lg);
+    position: relative; overflow: hidden;
+  }
+  .hero-dashboard::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan), var(--accent));
+  }
+  .dashboard-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .dashboard-title { color: #fff; font-weight: 700; font-size: 0.9rem; font-family: var(--font-display); }
+  .dashboard-dots { display: flex; gap: 6px; }
+  .dashboard-dots span { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #FF5F57; }
+  .dot-y { background: #FEBC2E; }
+  .dot-g { background: #28C840; }
+
+  .dashboard-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .metric-card {
+    background: rgba(15,111,255,0.1); border: 1px solid rgba(15,111,255,0.2);
+    border-radius: 10px; padding: 14px;
+  }
+  .metric-value { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: #fff; }
+  .metric-label { font-size: 0.7rem; color: var(--gray-400); margin-top: 2px; }
+  .metric-change { font-size: 0.7rem; color: var(--accent); margin-top: 4px; font-weight: 600; }
+
+  .chart-area {
+    background: rgba(0,0,0,0.2); border-radius: 10px; padding: 16px; height: 110px;
+    display: flex; align-items: flex-end; gap: 8px; margin-bottom: 16px;
+  }
+  .bar {
+    flex: 1; border-radius: 4px 4px 0 0;
+    background: linear-gradient(180deg, var(--blue-light), var(--blue));
+    opacity: 0.7; transition: opacity 0.2s;
+    animation: growUp 1s ease both;
+  }
+  .bar:hover { opacity: 1; }
+  .bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+  .bar:nth-child(2) { height: 65%; animation-delay: 0.15s; }
+  .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+  .bar:nth-child(4) { height: 80%; animation-delay: 0.25s; background: linear-gradient(180deg, var(--cyan), var(--blue)); }
+  .bar:nth-child(5) { height: 60%; animation-delay: 0.3s; }
+  .bar:nth-child(6) { height: 90%; animation-delay: 0.35s; background: linear-gradient(180deg, var(--accent), var(--cyan)); }
+  .bar:nth-child(7) { height: 75%; animation-delay: 0.4s; }
+  @keyframes growUp { from{transform:scaleY(0);transform-origin:bottom} to{transform:scaleY(1);transform-origin:bottom} }
+
+  .ai-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, rgba(0,255,178,0.15), rgba(0,212,255,0.15));
+    border: 1px solid rgba(0,255,178,0.3);
+    border-radius: 8px; padding: 10px 14px;
+    font-size: 0.78rem; color: var(--accent); font-weight: 600;
+  }
+  .ai-icon { font-size: 1rem; }
+
+  .float-tags {
+    position: absolute; right: -24px; top: 30px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .float-tag {
+    background: var(--navy-mid); border: 1px solid rgba(15,111,255,0.3);
+    border-radius: 8px; padding: 8px 12px; font-size: 0.72rem; color: var(--gray-400);
+    white-space: nowrap; font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: float 3s ease-in-out infinite;
+  }
+  .float-tag:nth-child(2) { animation-delay: 1s; }
+  .float-tag:nth-child(3) { animation-delay: 2s; }
+  .float-tag .tag-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 6px; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 5vw; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(15,111,255,0.08); border: 1px solid rgba(15,111,255,0.2);
+    color: var(--blue); border-radius: 100px; padding: 5px 14px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800; color: var(--navy); line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-h2 .hl { color: var(--blue); }
+  .section-lead { color: var(--gray-600); font-size: 1.05rem; line-height: 1.75; max-width: 600px; }
+  .section-header-center { text-align: center; }
+  .section-header-center .section-lead { margin: 0 auto; }
+
+  /* ── CLIENTS STRIP ── */
+  #clients {
+    padding: 48px 5vw;
+    background: var(--gray-100);
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .clients-label { text-align: center; color: var(--gray-400); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 28px; }
+  .clients-logos { display: flex; justify-content: center; align-items: center; gap: 56px; flex-wrap: wrap; }
+  .client-logo {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 1rem; color: var(--gray-400); letter-spacing: 0.04em;
+    opacity: 0.6; transition: opacity 0.2s;
+  }
+  .client-logo:hover { opacity: 1; color: var(--navy); }
+
+  /* ── TENTANG KAMI ── */
+  #tentang { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-visual {
+    position: relative;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    border-radius: 24px; padding: 40px; overflow: hidden;
+    min-height: 380px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(15,111,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,111,255,0.1) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .about-visual-icon {
+    font-size: 5rem; position: absolute; top: 32px; right: 32px; opacity: 0.3;
+  }
+  .about-visual-stat {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .av-stat {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 16px;
+  }
+  .av-stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--cyan); }
+  .av-stat-label { font-size: 0.78rem; color: var(--gray-400); margin-top: 4px; }
+
+  .about-content .section-lead { margin-bottom: 32px; }
+  .visi-misi { display: flex; flex-direction: column; gap: 16px; }
+  .vm-item {
+    background: var(--gray-100); border-radius: 12px; padding: 20px 24px;
+    border-left: 3px solid var(--blue);
+  }
+  .vm-label { font-weight: 700; color: var(--navy); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .vm-text { color: var(--gray-600); font-size: 0.9rem; }
+
+  /* ── LAYANAN ── */
+  #layanan { background: var(--gray-100); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 56px; }
+  .service-card {
+    background: var(--white); border-radius: var(--radius); padding: 32px;
+    border: 1px solid var(--gray-200);
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform var(--transition);
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(15,111,255,0.2); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  .icon-blue { background: rgba(15,111,255,0.1); }
+  .icon-cyan { background: rgba(0,212,255,0.1); }
+  .icon-green { background: rgba(0,255,178,0.1); }
+  .icon-purple { background: rgba(139,92,246,0.1); }
+  .service-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .service-list li { color: var(--gray-600); font-size: 0.88rem; display: flex; align-items: center; gap: 8px; }
+  .service-list li::before { content: '→'; color: var(--blue); font-weight: 700; flex-shrink: 0; }
+
+  /* ── AI SOLUTIONS ── */
+  #ai { background: var(--navy); position: relative; overflow: hidden; }
+  #ai .section-h2 { color: #fff; }
+  #ai .section-lead { color: var(--gray-400); }
+  .ai-glow {
+    position: absolute; width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,212,255,0.08), transparent 70%);
+    top: -200px; right: -200px; pointer-events: none;
+  }
+  .ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 56px; }
+  .ai-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 28px;
+    transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  }
+  .ai-card:hover { background: rgba(15,111,255,0.12); border-color: rgba(15,111,255,0.4); transform: translateY(-4px); }
+  .ai-card-icon { font-size: 2rem; margin-bottom: 16px; }
+  .ai-card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .ai-card-desc { color: var(--gray-400); font-size: 0.875rem; line-height: 1.65; }
+  .ai-highlight {
+    margin-top: 64px;
+    background: linear-gradient(135deg, rgba(15,111,255,0.15), rgba(0,212,255,0.1));
+    border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 20px; padding: 40px 48px;
+    display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+  }
+  .ai-highlight-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .ai-highlight-desc { color: var(--gray-400); line-height: 1.7; }
+  .ai-highlight-stat { text-align: center; }
+  .ai-highlight-num { font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: var(--cyan); }
+  .ai-highlight-label { color: var(--gray-400); font-size: 0.85rem; }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--white); }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; margin-top: 56px; }
+  .portfolio-card {
+    border-radius: 20px; overflow: hidden; border: 1px solid var(--gray-200);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .portfolio-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .portfolio-thumb {
+    height: 180px; display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; position: relative; overflow: hidden;
+  }
+  .thumb-1 { background: linear-gradient(135deg, #0A1628, #1a3a6e); }
+  .thumb-2 { background: linear-gradient(135deg, #0d2137, #0F6FFF30); }
+  .thumb-3 { background: linear-gradient(135deg, #0a2b1e, #00FFB230); }
+  .thumb-4 { background: linear-gradient(135deg, #1a0a2e, #7c3aed30); }
+  .thumb-5 { background: linear-gradient(135deg, #1a1000, #f59e0b30); }
+  .thumb-6 { background: linear-gradient(135deg, #001a2e, #00D4FF30); }
+  .portfolio-content { padding: 24px; }
+  .portfolio-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .portfolio-desc { color: var(--gray-600); font-size: 0.875rem; line-height: 1.65; margin-bottom: 16px; }
+  .portfolio-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .portfolio-tag {
+    background: rgba(15,111,255,0.08); color: var(--blue);
+    border-radius: 6px; padding: 3px 10px; font-size: 0.72rem; font-weight: 600;
+  }
+  .portfolio-impact {
+    background: var(--gray-100); border-radius: 8px; padding: 10px 14px;
+    font-size: 0.8rem; color: var(--gray-600); border-left: 3px solid var(--accent);
+  }
+  .portfolio-impact strong { color: var(--navy); }
+
+  /* ── KEUNGGULAN ── */
+  #keunggulan { background: var(--gray-100); }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
+  .feature-card {
+    background: var(--white); border-radius: var(--radius); padding: 32px;
+    border: 1px solid var(--gray-200);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .feature-num {
+    font-family: var(--font-display); font-size: 2.5rem; font-weight: 800;
+    color: rgba(15,111,255,0.15); line-height: 1; margin-bottom: 16px;
+  }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 16px; }
+  .feature-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .feature-desc { color: var(--gray-600); font-size: 0.875rem; line-height: 1.7; }
+
+  /* ── TESTIMONI ── */
+  #testimoni { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 56px; }
+  .testimonial-card {
+    background: var(--gray-100); border-radius: var(--radius); padding: 32px;
+    border: 1px solid var(--gray-200); position: relative;
+    transition: transform var(--transition);
+  }
+  .testimonial-card:hover { transform: translateY(-4px); }
+  .quote-mark { font-size: 4rem; color: var(--blue); opacity: 0.2; font-family: Georgia, serif; line-height: 0.8; margin-bottom: 12px; }
+  .testimonial-text { color: var(--gray-600); font-size: 0.9rem; line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; color: #fff;
+    flex-shrink: 0;
+  }
+  .av-1 { background: linear-gradient(135deg, var(--blue), var(--cyan)); }
+  .av-2 { background: linear-gradient(135deg, #7c3aed, var(--blue)); }
+  .av-3 { background: linear-gradient(135deg, var(--accent), var(--cyan)); }
+  .author-name { font-weight: 700; font-size: 0.88rem; color: var(--navy); }
+  .author-role { font-size: 0.78rem; color: var(--gray-400); margin-top: 2px; }
+  .stars { color: #F59E0B; font-size: 0.85rem; margin-bottom: 4px; }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--navy); padding: 100px 5vw;
+    position: relative; overflow: hidden; text-align: center;
+  }
+  #cta .ai-glow { top: -300px; left: 50%; transform: translateX(-50%); }
+  .cta-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+  .cta-h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: #fff; margin-bottom: 20px; }
+  .cta-h2 span { color: var(--cyan); }
+  .cta-desc { color: var(--gray-400); font-size: 1.05rem; line-height: 1.75; margin-bottom: 40px; }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── KONTAK ── */
+  #kontak { background: var(--gray-100); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; margin-top: 56px; }
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(15,111,255,0.1); border: 1px solid rgba(15,111,255,0.2);
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .contact-detail strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 0.9rem; }
+  .contact-detail p { color: var(--gray-600); font-size: 0.875rem; }
+  .contact-detail a { color: var(--blue); text-decoration: none; font-size: 0.875rem; }
+  .contact-detail a:hover { text-decoration: underline; }
+
+  .contact-form { background: var(--white); border-radius: 20px; padding: 40px; border: 1px solid var(--gray-200); box-shadow: var(--shadow); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-weight: 600; font-size: 0.85rem; color: var(--navy); margin-bottom: 8px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-200);
+    border-radius: 10px; font-size: 0.9rem; font-family: var(--font-body);
+    color: var(--gray-800); background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--blue); box-shadow: 0 0 0 3px rgba(15,111,255,0.12);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--blue), var(--blue-light));
+    color: #fff; border: none; padding: 14px 32px; border-radius: 10px;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: var(--font-body);
+    box-shadow: 0 4px 20px rgba(15,111,255,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(15,111,255,0.4); }
+  .form-note { text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--gray-400); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); padding: 64px 5vw 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand .nav-logo { margin-bottom: 16px; }
+  .footer-desc { color: var(--gray-400); font-size: 0.875rem; line-height: 1.7; max-width: 280px; }
+  .footer-col-title { font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 0.9rem; margin-bottom: 16px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: var(--gray-400); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--cyan); }
+  .footer-bottom {
+    padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy { color: var(--gray-400); font-size: 0.8rem; }
+  .footer-badges { display: flex; gap: 12px; }
+  .footer-badge {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; padding: 4px 10px; font-size: 0.72rem; color: var(--gray-400);
+  }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+    background: var(--navy-mid); border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 5vw; display: flex; flex-direction: column; gap: 20px;
+    transform: translateY(-100%); opacity: 0; pointer-events: none;
+    transition: var(--transition);
+  }
+  .mobile-menu.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .mobile-menu a { color: var(--gray-400); text-decoration: none; font-size: 1rem; font-weight: 500; }
+  .mobile-menu a:hover { color: #fff; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .ai-highlight { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">RA</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Rancang Asa</span>
+      <span class="nav-logo-sub">INDONESIA</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#tentang">Tentang Kami</a></li>
+    <li><a href="#layanan">Layanan</a></li>
+    <li><a href="#ai">AI Solutions</a></li>
+    <li><a href="#portfolio">Portofolio</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">Konsultasi Gratis</button>
+  <div class="nav-burger" onclick="toggleMenu()" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#tentang" onclick="closeMenu()">Tentang Kami</a>
+  <a href="#layanan" onclick="closeMenu()">Layanan</a>
+  <a href="#ai" onclick="closeMenu()">AI Solutions</a>
+  <a href="#portfolio" onclick="closeMenu()">Portofolio</a>
+  <a href="#kontak" onclick="closeMenu()">Kontak</a>
+  <button class="btn-primary" onclick="closeMenu();document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">Konsultasi Gratis</button>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span></span>Technology Partner Terpercaya</div>
+      <h1 class="hero-h1">Membangun Software, Sistem Digital, dan <span class="highlight">Solusi AI</span> untuk Bisnis Modern</h1>
+      <p class="hero-sub">PT Rancang Asa Indonesia membantu perusahaan dan institusi membangun sistem digital, automasi bisnis, serta solusi Artificial Intelligence yang efisien dan scalable.</p>
+      <div class="hero-btns">
+        <a href="#kontak" class="btn-primary">💬 Konsultasi Gratis</a>
+        <a href="#portfolio" class="btn-secondary">📂 Lihat Portofolio</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">50<span>+</span></div>
+          <div class="hero-stat-label">Proyek Selesai</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">40<span>+</span></div>
+          <div class="hero-stat-label">Klien Puas</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5<span>+</span></div>
+          <div class="hero-stat-label">Tahun Pengalaman</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Dashboard Visual -->
+    <div class="hero-visual">
+      <div class="hero-dashboard">
+        <div class="dashboard-header">
+          <div class="dashboard-dots">
+            <span class="dot-r"></span>
+            <span class="dot-y"></span>
+            <span class="dot-g"></span>
+          </div>
+          <div class="dashboard-title">Business Intelligence Dashboard</div>
+          <div style="font-size:0.7rem;color:var(--gray-400)">Live</div>
+        </div>
+        <div class="dashboard-metrics">
+          <div class="metric-card">
+            <div class="metric-value">98%</div>
+            <div class="metric-label">Uptime SLA</div>
+            <div class="metric-change">↑ Stable</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">2.4ms</div>
+            <div class="metric-label">Response Time</div>
+            <div class="metric-change">↓ Optimal</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">12K</div>
+            <div class="metric-label">Daily Requests</div>
+            <div class="metric-change">↑ +23%</div>
+          </div>
+        </div>
+        <div class="chart-area">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="ai-badge">
+          <span class="ai-icon">🤖</span>
+          AI Engine: <strong style="color:var(--cyan)">Active</strong> — Processing 847 requests/min
+        </div>
+      </div>
+      <div class="float-tags">
+        <div class="float-tag"><span class="tag-dot"></span>Automation Running</div>
+        <div class="float-tag"><span class="tag-dot"></span>AI Model: v3.2</div>
+        <div class="float-tag"><span class="tag-dot"></span>Cloud Synced</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<div id="clients">
+  <div class="container">
+    <div class="clients-label">Dipercaya oleh perusahaan dan institusi</div>
+    <div class="clients-logos">
+      <div class="client-logo">BUMN Group</div>
+      <div class="client-logo">Pemerintah Daerah</div>
+      <div class="client-logo">Korporasi Swasta</div>
+      <div class="client-logo">UMKM Digital</div>
+      <div class="client-logo">Institusi Pendidikan</div>
+    </div>
+  </div>
+</div>
+
+<!-- TENTANG KAMI -->
+<section id="tentang">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-visual-icon">🏢</div>
+        <div class="about-visual-stat">
+          <div class="av-stat">
+            <div class="av-stat-num">50+</div>
+            <div class="av-stat-label">Proyek Berhasil</div>
+          </div>
+          <div class="av-stat">
+            <div class="av-stat-num">40+</div>
+            <div class="av-stat-label">Klien Aktif</div>
+          </div>
+          <div class="av-stat">
+            <div class="av-stat-num">100%</div>
+            <div class="av-stat-label">On-time Delivery</div>
+          </div>
+          <div class="av-stat">
+            <div class="av-stat-num">24/7</div>
+            <div class="av-stat-label">Support & Maintenance</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content reveal">
+        <div class="section-tag">🏢 Tentang Kami</div>
+        <h2 class="section-h2">Mitra Teknologi <span class="hl">Digital Anda</span></h2>
+        <p class="section-lead">PT Rancang Asa Indonesia adalah perusahaan teknologi yang menyediakan layanan pengembangan software, solusi IT, serta implementasi Artificial Intelligence untuk membantu organisasi meningkatkan efisiensi, produktivitas, dan transformasi digital.</p>
+        <div class="visi-misi">
+          <div class="vm-item">
+            <div class="vm-label">🎯 Visi</div>
+            <div class="vm-text">Menjadi mitra teknologi terpercaya dalam pengembangan solusi digital dan AI bagi perusahaan dan institusi di Indonesia.</div>
+          </div>
+          <div class="vm-item">
+            <div class="vm-label">🚀 Misi</div>
+            <div class="vm-text">Mengembangkan solusi software yang scalable, membantu transformasi digital, dan mengintegrasikan teknologi AI untuk meningkatkan produktivitas bisnis klien kami.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYANAN -->
+<section id="layanan">
+  <div class="container">
+    <div class="section-header-center reveal">
+      <div class="section-tag">⚙️ Layanan Kami</div>
+      <h2 class="section-h2">Solusi Teknologi <span class="hl">Lengkap & Terintegrasi</span></h2>
+      <p class="section-lead">Kami menyediakan layanan end-to-end mulai dari pengembangan software, infrastruktur IT, hingga implementasi kecerdasan buatan.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon icon-blue">💻</div>
+        <div class="service-title">Software Development</div>
+        <ul class="service-list">
+          <li>Web Application Development</li>
+          <li>Mobile App Development</li>
+          <li>Custom Software Development</li>
+          <li>Enterprise Systems</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-cyan">🔧</div>
+        <div class="service-title">IT Solutions</div>
+        <ul class="service-list">
+          <li>System Integration</li>
+          <li>Cloud Infrastructure</li>
+          <li>Business Process Automation</li>
+          <li>Data Management Systems</li>
+          <li>API Development</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-green">🤖</div>
+        <div class="service-title">AI Solutions</div>
+        <ul class="service-list">
+          <li>AI Chatbot Development</li>
+          <li>AI Customer Service Automation</li>
+          <li>AI Data Analysis</li>
+          <li>AI Document Processing</li>
+          <li>AI Agent for Business</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon icon-purple">🎨</div>
+        <div class="service-title">Digital Services</div>
+        <ul class="service-list">
+          <li>Website Development</li>
+          <li>UI/UX Design</li>
+          <li>System Maintenance</li>
+          <li>IT Consulting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SOLUTIONS -->
+<section id="ai">
+  <div class="ai-glow"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="section-header-center reveal">
+      <div class="section-tag" style="background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.3);color:var(--cyan)">🤖 AI Solutions</div>
+      <h2 class="section-h2">Kecerdasan Buatan untuk <span style="color:var(--cyan)">Bisnis Anda</span></h2>
+      <p class="section-lead">Implementasi solusi AI yang praktis, terukur, dan langsung berdampak pada efisiensi operasional bisnis Anda.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card reveal">
+        <div class="ai-card-icon">💬</div>
+        <div class="ai-card-title">AI Chatbot Development</div>
+        <div class="ai-card-desc">Chatbot cerdas berbasis AI yang mampu melayani pelanggan 24/7, menjawab pertanyaan, dan menyelesaikan transaksi secara otomatis.</div>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-card-icon">🎧</div>
+        <div class="ai-card-title">AI Customer Service</div>
+        <div class="ai-card-desc">Otomasi layanan pelanggan menggunakan AI untuk meningkatkan kepuasan pelanggan dan mengurangi beban tim support.</div>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-card-icon">📊</div>
+        <div class="ai-card-title">AI Data Analysis</div>
+        <div class="ai-card-desc">Analisis data bisnis secara otomatis dengan AI untuk menghasilkan insights akurat dan mendukung pengambilan keputusan strategis.</div>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-card-icon">📄</div>
+        <div class="ai-card-title">AI Document Processing</div>
+        <div class="ai-card-desc">Otomasi pemrosesan dokumen, ekstraksi data, dan klasifikasi dokumen secara cerdas untuk efisiensi administrasi.</div>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-card-icon">⚡</div>
+        <div class="ai-card-title">AI Business Agent</div>
+        <div class="ai-card-desc">Agen AI yang menjalankan tugas bisnis secara otonom — dari penjadwalan, pelaporan, hingga koordinasi antar sistem.</div>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-card-icon">🔮</div>
+        <div class="ai-card-title">Predictive Analytics</div>
+        <div class="ai-card-desc">Model prediktif berbasis machine learning untuk forecasting demand, deteksi anomali, dan optimasi proses bisnis.</div>
+      </div>
+    </div>
+    <div class="ai-highlight reveal">
+      <div>
+        <div class="ai-highlight-title">✨ Mengapa AI adalah Masa Depan Bisnis?</div>
+        <div class="ai-highlight-desc">Perusahaan yang mengadopsi AI lebih awal memiliki keunggulan kompetitif yang signifikan. Tim kami membantu Anda mengintegrasikan AI ke dalam proses bisnis secara bertahap, terukur, dan sesuai kebutuhan — tanpa kerumitan teknis.</div>
+      </div>
+      <div class="ai-highlight-stat">
+        <div class="ai-highlight-num">70%</div>
+        <div class="ai-highlight-label">Rata-rata peningkatan<br>efisiensi klien kami</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header-center reveal">
+      <div class="section-tag">📂 Portofolio</div>
+      <h2 class="section-h2">Proyek yang <span class="hl">Telah Kami Kerjakan</span></h2>
+      <p class="section-lead">Beberapa hasil karya kami yang telah memberikan dampak nyata bagi klien dari berbagai industri.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb thumb-1">🏢</div>
+        <div class="portfolio-content">
+          <div class="portfolio-title">Sistem Manajemen Perusahaan</div>
+          <div class="portfolio-desc">Sistem ERP terpadu untuk manajemen SDM, keuangan, inventaris, dan pelaporan untuk perusahaan manufaktur nasional.</div>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">React</span>
+            <span class="portfolio-tag">Node.js</span>
+            <span class="portfolio-tag">PostgreSQL</span>
+            <span class="portfolio-tag">Docker</span>
+          </div>
+          <div class="portfolio-impact"><strong>Dampak:</strong> Efisiensi operasional meningkat 45%, laporan real-time tersedia 24/7</div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb thumb-2">📊</div>
+        <div class="portfolio-content">
+          <div class="portfolio-title">Dashboard Data Analytics</div>
+          <div class="portfolio-desc">Platform business intelligence berbasis AI untuk visualisasi data penjualan, monitoring KPI, dan forecasting bisnis.</div>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">Python</span>
+            <span class="portfolio-tag">Power BI</span>
+            <span class="portfolio-tag">AI/ML</span>
+            <span class="portfolio-tag">AWS</span>
+          </div>
+          <div class="portfolio-impact"><strong>Dampak:</strong> Pengambilan keputusan 3x lebih cepat, akurasi forecast 89%</div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb thumb-3">🎟️</div>
+        <div class="portfolio-content">
+          <div class="portfolio-title">Sistem Keanggotaan Online</div>
+          <div class="portfolio-desc">Platform manajemen anggota digital untuk asosiasi nasional dengan 10.000+ member, termasuk portal self-service dan pembayaran otomatis.</div>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">Vue.js</span>
+            <span class="portfolio-tag">Laravel</span>
+            <span class="portfolio-tag">MySQL</span>
+            <span class="portfolio-tag">Midtrans</span>
+          </div>
+          <div class="portfolio-impact"><strong>Dampak:</strong> Administrasi turun 60%, penerimaan iuran naik 35%</div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb thumb-4">🤖</div>
+        <div class="portfolio-content">
+          <div class="portfolio-title">AI Customer Support Chatbot</div>
+          <div class="portfolio-desc">Chatbot AI berbahasa Indonesia yang menangani 80% pertanyaan pelanggan secara otomatis dengan integrasi WhatsApp & website.</div>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">LLM</span>
+            <span class="portfolio-tag">WhatsApp API</span>
+            <span class="portfolio-tag">Python</span>
+            <span class="portfolio-tag">Redis</span>
+          </div>
+          <div class="portfolio-impact"><strong>Dampak:</strong> Biaya support turun 55%, response time dari jam ke detik</div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb thumb-5">⚡</div>
+        <div class="portfolio-content">
+          <div class="portfolio-title">Sistem Otomasi Proses Bisnis</div>
+          <div class="portfolio-desc">Implementasi RPA dan workflow automation untuk proses pengadaan, persetujuan dokumen, dan pelaporan keuangan otomatis.</div>
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">RPA</span>
+            <span class="portfolio-tag">n8n</span>
+            <span class="portfolio-tag">API</span>
+            <span class="portfolio-tag">AI OCR</span>
+          </div>
+          <div class="portfolio-impact"><strong>Dampak:</strong> 200+ jam kerja/bulan dihemat, error manual turun 95%</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section id="keunggulan">
+  <div class="container">
+    <div class="section-header-center reveal">
+      <div class="section-tag">⭐ Mengapa Kami</div>
+      <h2 class="section-h2">Keunggulan yang Membuat <span class="hl">Kami Berbeda</span></h2>
+      <p class="section-lead">Kami tidak sekadar membangun software. Kami membangun solusi yang benar-benar bekerja untuk bisnis Anda.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-num">01</div>
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Solusi Custom Sesuai Kebutuhan</div>
+        <div class="feature-desc">Setiap bisnis unik. Kami membangun solusi yang dirancang khusus sesuai proses, kebutuhan, dan tujuan bisnis Anda — bukan template.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-num">02</div>
+        <div class="feature-icon">🚀</div>
+        <div class="feature-title">Teknologi Modern & Scalable</div>
+        <div class="feature-desc">Menggunakan stack teknologi terkini yang teruji — cloud-native, microservices, dan arsitektur yang siap tumbuh bersama bisnis Anda.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-num">03</div>
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">Integrasi AI & Automation</div>
+        <div class="feature-desc">Setiap solusi yang kami bangun dapat diintegrasikan dengan AI dan automation untuk memaksimalkan efisiensi dan mengurangi pekerjaan manual.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-num">04</div>
+        <div class="feature-icon">👨‍💻</div>
+        <div class="feature-title">Tim Developer Profesional</div>
+        <div class="feature-desc">Tim kami terdiri dari developer berpengalaman, UI/UX designer, dan konsultan IT yang berdedikasi untuk kualitas terbaik di setiap proyek.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-num">05</div>
+        <div class="feature-icon">🛡️</div>
+        <div class="feature-title">Support & Maintenance 24/7</div>
+        <div class="feature-desc">Kami tidak meninggalkan Anda setelah launch. Tim support kami siap membantu memastikan sistem Anda berjalan optimal setiap saat.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-num">06</div>
+        <div class="feature-icon">🔐</div>
+        <div class="feature-title">Keamanan & Compliance</div>
+        <div class="feature-desc">Sistem kami dibangun dengan standar keamanan tinggi, termasuk enkripsi data, audit trail, dan kepatuhan terhadap regulasi yang berlaku.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI DEMO -->
+<section id="demo" style="background:var(--navy);position:relative;overflow:hidden;padding:100px 5vw;">
+  <div class="ai-glow" style="left:-100px;top:-200px;"></div>
+  <div class="ai-glow" style="right:-100px;bottom:-200px;background:radial-gradient(circle,rgba(0,255,178,0.07),transparent 70%);"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="section-header-center reveal">
+      <div class="section-tag" style="background:rgba(0,255,178,0.1);border-color:rgba(0,255,178,0.3);color:var(--accent)">⚡ Live Demo</div>
+      <h2 class="section-h2" style="color:#fff">Coba <span style="color:var(--accent)">AI Assistant</span> Kami Langsung</h2>
+      <p class="section-lead" style="color:var(--gray-400);margin:0 auto;">Rasakan sendiri bagaimana AI yang kami bangun dapat menjawab pertanyaan bisnis Anda secara cerdas dan natural — dalam Bahasa Indonesia.</p>
+    </div>
+
+    <div class="demo-wrapper reveal" style="margin-top:56px;display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:start;">
+      <!-- Left: Info -->
+      <div>
+        <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:32px;">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px 24px;">
+            <div style="font-size:1.4rem;margin-bottom:8px;">💬</div>
+            <div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:0.95rem;margin-bottom:6px;">AI Customer Service</div>
+            <div style="color:var(--gray-400);font-size:0.85rem;line-height:1.6;">Tanya apa saja tentang layanan kami. AI ini dilatih untuk memahami konteks bisnis dan memberikan jawaban yang relevan.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px 24px;">
+            <div style="font-size:1.4rem;margin-bottom:8px;">🧠</div>
+            <div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:0.95rem;margin-bottom:6px;">Powered by LLM Terkini</div>
+            <div style="color:var(--gray-400);font-size:0.85rem;line-height:1.6;">Menggunakan model bahasa mutakhir yang dapat diintegrasikan ke sistem bisnis, WhatsApp, website, atau aplikasi Anda.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px 24px;">
+            <div style="font-size:1.4rem;margin-bottom:8px;">⚡</div>
+            <div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:0.95rem;margin-bottom:6px;">Custom untuk Bisnis Anda</div>
+            <div style="color:var(--gray-400);font-size:0.85rem;line-height:1.6;">AI yang kami bangun dapat disesuaikan dengan data, produk, dan SOP perusahaan Anda untuk hasil yang lebih akurat.</div>
+          </div>
+        </div>
+        <!-- Quick prompts -->
+        <div style="color:var(--gray-400);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;">💡 Coba tanyakan:</div>
+        <div style="display:flex;flex-direction:column;gap:8px;" id="quickPrompts">
+          <button onclick="useQuickPrompt(this)" style="background:rgba(15,111,255,0.12);border:1px solid rgba(15,111,255,0.25);border-radius:8px;padding:10px 14px;color:var(--gray-400);font-size:0.82rem;cursor:pointer;text-align:left;font-family:var(--font-body);transition:all 0.2s;" onmouseover="this.style.background='rgba(15,111,255,0.22)';this.style.color='#fff'" onmouseout="this.style.background='rgba(15,111,255,0.12)';this.style.color='var(--gray-400)'">Apa saja layanan AI yang bisa dibangun untuk bisnis saya?</button>
+          <button onclick="useQuickPrompt(this)" style="background:rgba(15,111,255,0.12);border:1px solid rgba(15,111,255,0.25);border-radius:8px;padding:10px 14px;color:var(--gray-400);font-size:0.82rem;cursor:pointer;text-align:left;font-family:var(--font-body);transition:all 0.2s;" onmouseover="this.style.background='rgba(15,111,255,0.22)';this.style.color='#fff'" onmouseout="this.style.background='rgba(15,111,255,0.12)';this.style.color='var(--gray-400)'">Berapa estimasi biaya untuk membuat aplikasi mobile?</button>
+          <button onclick="useQuickPrompt(this)" style="background:rgba(15,111,255,0.12);border:1px solid rgba(15,111,255,0.25);border-radius:8px;padding:10px 14px;color:var(--gray-400);font-size:0.82rem;cursor:pointer;text-align:left;font-family:var(--font-body);transition:all 0.2s;" onmouseover="this.style.background='rgba(15,111,255,0.22)';this.style.color='#fff'" onmouseout="this.style.background='rgba(15,111,255,0.12)';this.style.color='var(--gray-400)'">Bagaimana proses kerja sama proyek dengan Rancang Asa?</button>
+          <button onclick="useQuickPrompt(this)" style="background:rgba(15,111,255,0.12);border:1px solid rgba(15,111,255,0.25);border-radius:8px;padding:10px 14px;color:var(--gray-400);font-size:0.82rem;cursor:pointer;text-align:left;font-family:var(--font-body);transition:all 0.2s;" onmouseover="this.style.background='rgba(15,111,255,0.22)';this.style.color='#fff'" onmouseout="this.style.background='rgba(15,111,255,0.12)';this.style.color='var(--gray-400)'">Apa keuntungan mengintegrasikan AI ke sistem bisnis saya?</button>
+        </div>
+      </div>
+
+      <!-- Right: Chat UI -->
+      <div style="background:var(--navy-mid);border:1px solid rgba(255,255,255,0.1);border-radius:20px;overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,0.4);">
+        <!-- Chat header -->
+        <div style="background:rgba(15,111,255,0.15);border-bottom:1px solid rgba(255,255,255,0.08);padding:16px 20px;display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🤖</div>
+          <div>
+            <div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:0.9rem;">RAI Assistant</div>
+            <div style="font-size:0.72rem;color:var(--accent);display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;animation:pulse 2s infinite;"></span>Online — Siap Membantu</div>
+          </div>
+          <div style="margin-left:auto;font-size:0.72rem;color:var(--gray-400);background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:20px;">AI Demo</div>
+        </div>
+
+        <!-- Chat messages -->
+        <div id="chatMessages" style="height:360px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px;scroll-behavior:smooth;">
+          <!-- Welcome message -->
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <div style="width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;">🤖</div>
+            <div style="background:rgba(255,255,255,0.07);border-radius:0 12px 12px 12px;padding:12px 16px;max-width:85%;">
+              <div style="color:#fff;font-size:0.875rem;line-height:1.65;">Halo! Saya <strong>RAI</strong>, AI Assistant dari <strong>PT Rancang Asa Indonesia</strong> 👋<br><br>Saya siap membantu menjawab pertanyaan Anda tentang layanan kami — mulai dari software development, IT solutions, hingga implementasi AI untuk bisnis Anda.<br><br>Silakan tanyakan apa saja!</div>
+              <div style="color:var(--gray-400);font-size:0.68rem;margin-top:8px;">RAI Assistant • Baru saja</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat input -->
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding:16px 20px;display:flex;gap:10px;align-items:center;">
+          <input id="chatInput" type="text" placeholder="Ketik pertanyaan Anda..."
+            style="flex:1;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:11px 16px;color:#fff;font-size:0.875rem;font-family:var(--font-body);outline:none;transition:border-color 0.2s;"
+            onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"
+            placeholder="Ketik pertanyaan Anda...">
+          <button onclick="sendMessage()" id="sendBtn"
+            style="background:linear-gradient(135deg,var(--blue),var(--blue-light));border:none;border-radius:10px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:transform 0.2s,opacity 0.2s;flex-shrink:0;"
+            onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">➤</button>
+        </div>
+        <div style="padding:8px 20px 14px;text-align:center;font-size:0.68rem;color:var(--gray-400);">Demo AI — respons dihasilkan secara real-time oleh AI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #chatMessages::-webkit-scrollbar { width: 4px; }
+  #chatMessages::-webkit-scrollbar-track { background: transparent; }
+  #chatMessages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+  .typing-dot { display:inline-block;width:6px;height:6px;background:var(--gray-400);border-radius:50%;animation:typingAnim 1.2s infinite; }
+  .typing-dot:nth-child(2){animation-delay:0.2s;}
+  .typing-dot:nth-child(3){animation-delay:0.4s;}
+  @keyframes typingAnim{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-6px);opacity:1}}
+  @media(max-width:900px){.demo-wrapper{grid-template-columns:1fr!important;}}
+</style>
+
+<script>
+const SYSTEM_PROMPT = `Anda adalah RAI, AI Assistant dari PT Rancang Asa Indonesia — perusahaan teknologi yang menyediakan layanan software development, IT solutions, dan solusi AI.
+
+Tentang PT Rancang Asa Indonesia:
+- Layanan: Software Development (web, mobile, enterprise), IT Solutions (cloud, integrasi sistem, API), AI Solutions (chatbot, otomasi, analisis data, pemrosesan dokumen), Business Automation, UI/UX Design, IT Consulting
+- Klien: perusahaan swasta, BUMN, instansi pemerintah, UMKM, organisasi
+- Keunggulan: solusi custom, teknologi modern & scalable, integrasi AI & automation, tim profesional, support 24/7, keamanan tinggi
+- Kontak: info@rancangasa.id | WhatsApp: +62 899-7409-517
+- Lokasi: Jakarta, Indonesia
+
+Panduan respons:
+- Jawab dalam Bahasa Indonesia yang ramah, profesional, dan informatif
+- Jika ditanya harga/biaya, jelaskan bahwa harga bersifat custom sesuai kebutuhan dan ajak untuk konsultasi gratis
+- Jika pertanyaan di luar bidang teknologi/bisnis, tetap bantu sewajarnya tapi arahkan kembali ke topik yang relevan
+- Jawaban singkat dan to the point, maksimal 3-4 paragraf
+- Selalu akhiri dengan ajakan untuk konsultasi atau kontak jika relevan`;
+
+let chatHistory = [];
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  input.value = '';
+  appendMessage('user', msg);
+  chatHistory.push({ role: 'user', content: msg });
+
+  const typingId = appendTyping();
+  const sendBtn = document.getElementById('sendBtn');
+  sendBtn.disabled = true;
+  sendBtn.style.opacity = '0.5';
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: chatHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || 'Maaf, terjadi kesalahan. Silakan coba lagi.';
+    removeTyping(typingId);
+    appendMessage('ai', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    removeTyping(typingId);
+    appendMessage('ai', 'Maaf, koneksi bermasalah. Silakan hubungi kami langsung via WhatsApp atau email untuk konsultasi.');
+  } finally {
+    sendBtn.disabled = false;
+    sendBtn.style.opacity = '1';
+  }
+}
+
+function appendMessage(role, text) {
+  const box = document.getElementById('chatMessages');
+  const isUser = role === 'user';
+  const time = new Date().toLocaleTimeString('id-ID', {hour:'2-digit',minute:'2-digit'});
+
+  const wrapper = document.createElement('div');
+  wrapper.style.cssText = `display:flex;gap:10px;align-items:flex-start;${isUser ? 'flex-direction:row-reverse;' : ''}`;
+
+  const avatar = document.createElement('div');
+  avatar.style.cssText = `width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;${isUser ? 'background:linear-gradient(135deg,#475569,#334155);' : 'background:linear-gradient(135deg,var(--blue),var(--cyan));'}`;
+  avatar.textContent = isUser ? '👤' : '🤖';
+
+  const bubble = document.createElement('div');
+  bubble.style.cssText = `max-width:82%;${isUser ? 'background:linear-gradient(135deg,rgba(15,111,255,0.25),rgba(61,142,255,0.2));border-radius:12px 0 12px 12px;' : 'background:rgba(255,255,255,0.07);border-radius:0 12px 12px 12px;'}padding:12px 16px;`;
+
+  const textEl = document.createElement('div');
+  textEl.style.cssText = 'color:#fff;font-size:0.875rem;line-height:1.65;white-space:pre-wrap;';
+  textEl.textContent = text;
+
+  const timeEl = document.createElement('div');
+  timeEl.style.cssText = 'color:var(--gray-400);font-size:0.68rem;margin-top:8px;';
+  timeEl.textContent = isUser ? `Anda • ${time}` : `RAI Assistant • ${time}`;
+
+  bubble.appendChild(textEl);
+  bubble.appendChild(timeEl);
+  wrapper.appendChild(avatar);
+  wrapper.appendChild(bubble);
+  box.appendChild(wrapper);
+  box.scrollTop = box.scrollHeight;
+}
+
+function appendTyping() {
+  const box = document.getElementById('chatMessages');
+  const id = 'typing-' + Date.now();
+  const wrapper = document.createElement('div');
+  wrapper.id = id;
+  wrapper.style.cssText = 'display:flex;gap:10px;align-items:flex-start;';
+  wrapper.innerHTML = `
+    <div style="width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;">🤖</div>
+    <div style="background:rgba(255,255,255,0.07);border-radius:0 12px 12px 12px;padding:14px 18px;display:flex;gap:6px;align-items:center;">
+      <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+    </div>`;
+  box.appendChild(wrapper);
+  box.scrollTop = box.scrollHeight;
+  return id;
+}
+
+function removeTyping(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function useQuickPrompt(btn) {
+  document.getElementById('chatInput').value = btn.textContent.trim();
+  sendMessage();
+}
+</script>
+
+<!-- TESTIMONI -->
+<section id="testimoni">
+  <div class="container">
+    <div class="section-header-center reveal">
+      <div class="section-tag">💬 Testimoni</div>
+      <h2 class="section-h2">Apa Kata <span class="hl">Klien Kami</span></h2>
+      <p class="section-lead">Kepercayaan klien adalah ukuran keberhasilan kami yang sesungguhnya.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="testimonial-text">Rancang Asa membantu kami membangun sistem ERP yang benar-benar sesuai dengan alur kerja perusahaan kami. Prosesnya profesional, tepat waktu, dan hasilnya melebihi ekspektasi. Efisiensi operasional kami meningkat drastis.</div>
+        <div class="testimonial-author">
+          <div class="author-avatar av-1">BW</div>
+          <div>
+            <div class="author-name">Budi Widodo</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="testimonial-text">AI chatbot yang mereka bangun untuk layanan pelanggan kami luar biasa. Sekarang 80% pertanyaan pelanggan ditangani otomatis, dan kepuasan pelanggan justru meningkat. Tim support kami bisa fokus ke hal yang lebih penting.</div>
+        <div class="testimonial-author">
+          <div class="author-avatar av-2">SR</div>
+          <div>
+            <div class="author-name">Siti Rahayu</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <div class="testimonial-text">Sebagai instansi pemerintah, kami membutuhkan mitra yang memahami kebutuhan kami. Rancang Asa sangat responsif, memahami regulasi, dan menghasilkan sistem yang handal. Portal layanan publik kami kini jauh lebih baik.</div>
+        <div class="testimonial-author">
+          <div class="author-avatar av-3">AP</div>
+          <div>
+            <div class="author-name">Ahmad Pratama</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="ai-glow"></div>
+  <div class="cta-inner reveal">
+    <h2 class="cta-h2">Siap Memulai <span>Transformasi Digital</span> Bisnis Anda?</h2>
+    <p class="cta-desc">Diskusikan kebutuhan software, sistem digital, atau solusi AI untuk bisnis Anda bersama tim kami. Konsultasi pertama gratis, tanpa komitmen.</p>
+    <div class="cta-btns">
+      <a href="#kontak" class="btn-primary">💬 Konsultasi Gratis</a>
+      <a href="https://wa.me/628997409517" class="btn-secondary">📱 WhatsApp Kami</a>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+  <div class="container">
+    <div class="section-header-center reveal">
+      <div class="section-tag">📬 Kontak</div>
+      <h2 class="section-h2">Hubungi <span class="hl">Tim Kami</span></h2>
+      <p class="section-lead">Kami siap mendiskusikan kebutuhan teknologi Anda dan memberikan solusi terbaik yang sesuai anggaran dan timeline.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail">
+            <strong>Email</strong>
+            <a href="mailto:info@rancangasa.id">info@rancangasa.id</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-detail">
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/628997409517">+62 899-7409-517</a>
+            <p style="margin-top:4px">Tersedia Senin–Jumat, 09.00–17.00 WIB</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <strong>Lokasi</strong>
+            <p>Jakarta, Indonesia</p>
+            <p>Melayani klien di seluruh Indonesia</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-detail">
+            <strong>Jam Operasional</strong>
+            <p>Senin – Jumat: 09.00 – 17.00 WIB</p>
+            <p>Weekend: Untuk kebutuhan urgent</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:24px">Kirim Pesan</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nama Lengkap *</label>
+            <input type="text" placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" placeholder="john@company.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Perusahaan / Institusi</label>
+            <input type="text" placeholder="PT Perusahaan Anda">
+          </div>
+          <div class="form-group">
+            <label>No. Telepon</label>
+            <input type="tel" placeholder="+62 8xx xxxx xxxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Layanan yang Dibutuhkan</label>
+          <select>
+            <option value="">Pilih Layanan</option>
+            <option>Software Development</option>
+            <option>IT Solutions & Infrastruktur</option>
+            <option>AI Solutions</option>
+            <option>Business Automation</option>
+            <option>Website Development</option>
+            <option>IT Consulting</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ceritakan Kebutuhan Anda *</label>
+          <textarea placeholder="Jelaskan kebutuhan sistem, masalah yang ingin diselesaikan, atau target yang ingin dicapai..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">🚀 Kirim Pesan</button>
+        <div class="form-note">Kami akan menghubungi Anda dalam 1×24 jam kerja</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="margin-bottom:16px;display:inline-flex">
+          <div class="nav-logo-icon">RA</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-main">Rancang Asa</span>
+            <span class="nav-logo-sub">INDONESIA</span>
+          </div>
+        </a>
+        <div class="footer-desc">Mitra teknologi terpercaya untuk pengembangan software, solusi IT, dan implementasi AI bagi perusahaan dan institusi di Indonesia.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Layanan</div>
+        <ul class="footer-links">
+          <li><a href="#layanan">Software Development</a></li>
+          <li><a href="#layanan">IT Solutions</a></li>
+          <li><a href="#ai">AI Solutions</a></li>
+          <li><a href="#layanan">Business Automation</a></li>
+          <li><a href="#layanan">IT Consulting</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Perusahaan</div>
+        <ul class="footer-links">
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#portfolio">Portofolio</a></li>
+          <li><a href="#keunggulan">Keunggulan</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Kontak</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@rancangasa.id">info@rancangasa.id</a></li>
+          <li><a href="https://wa.me/628997409517">+62 899-7409-517</a></li>
+          <li><a href="#">Jakarta, Indonesia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 PT Rancang Asa Indonesia. Hak cipta dilindungi.</div>
+      <div class="footer-badges">
+        <span class="footer-badge">🔒 Secure</span>
+        <span class="footer-badge">☁️ Cloud Ready</span>
+        <span class="footer-badge">🤖 AI Powered</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(10,22,40,0.98)';
+    } else {
+      nav.style.background = 'rgba(10,22,40,0.92)';
+    }
+  });
+
+  // Form handler
+  function handleSubmit() {
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = '✅ Pesan Terkirim!';
+    btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+    setTimeout(() => {
+      btn.textContent = '🚀 Kirim Pesan';
+      btn.style.background = '';
+    }, 3000);
+  }
+</script>
+</body>
+</html>
